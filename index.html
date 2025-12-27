@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>diorite</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1a1030 0, #050510 50%, #020208 100%);
+      color: #e8d7ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portal {
+      width: 900px;
+      max-width: 95vw;
+      border-radius: 18px;
+      padding: 26px 30px 30px;
+      background: radial-gradient(circle at top left, #351862 0, #11061f 45%, #05030b 100%);
+      box-shadow:
+        0 0 30px rgba(161, 94, 255, 0.5),
+        0 0 120px rgba(140, 82, 255, 0.4);
+      border: 1px solid rgba(195, 160, 255, 0.4);
+    }
+
+    .header-title {
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #f6e4ff;
+      text-shadow: 0 0 12px rgba(255, 180, 255, 0.9);
+    }
+
+    .header-subtitle {
+      margin-top: 4px;
+      font-size: 13px;
+      color: #c1a7ff;
+      opacity: 0.9;
+    }
+
+    .grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.1fr 1.1fr 1.1fr;
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: 14px;
+      padding: 14px 16px 16px;
+      background: radial-gradient(circle at top, #281245 0, #0c0718 45%, #05030d 100%);
+      border: 1px solid rgba(172, 132, 255, 0.4);
+      box-shadow: 0 0 20px rgba(138, 92, 255, 0.35);
+    }
+
+    .card-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #efddff;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a488ff;
+      opacity: 0.85;
+    }
+
+    .stat-value {
+      margin-top: 2px;
+      font-size: 20px;
+      color: #f3e8ff;
+      text-shadow: 0 0 10px rgba(219, 191, 255, 0.7);
+    }
+
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      margin-top: 6px;
+      border-radius: 999px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(199, 160, 255, 0.7);
+      background: linear-gradient(120deg, rgba(160, 105, 255, 0.25), rgba(255, 194, 255, 0.08));
+      color: #f7e9ff;
+    }
+
+    .pill {
+      display: block;
+      margin-top: 8px;
+      font-size: 11px;
+      color: #ceb4ff;
+      opacity: 0.9;
+    }
+
+    .download-item {
+      margin-top: 10px;
+    }
+
+    .download-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #f4e4ff;
+    }
+
+    .download-desc {
+      font-size: 11px;
+      color: #c8b2ff;
+      opacity: 0.9;
+      margin-top: 2px;
+    }
+
+    .join-card {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a488ff;
+      opacity: 0.9;
+    }
+
+    .input-field {
+      margin-top: 4px;
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 9px;
+      border: 1px solid rgba(186, 151, 255, 0.8);
+      background: radial-gradient(circle at top, #1c0f35 0, #0a0515 45%, #05030c 100%);
+      color: #f5e9ff;
+      font-size: 12px;
+      outline: none;
+      box-shadow: 0 0 12px rgba(166, 118, 255, 0.5);
+    }
+
+    .input-field::placeholder {
+      color: #8e6fe0;
+    }
+
+    .join-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn-join {
+      padding: 7px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(117, 255, 210, 0.9);
+      background: radial-gradient(circle at top, #1bfcc2 0, #0da37c 40%, #044636 100%);
+      color: #02110d;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      box-shadow:
+        0 0 14px rgba(152, 255, 220, 0.9),
+        0 0 40px rgba(120, 255, 210, 0.7);
+    }
+
+    .btn-join:hover {
+      filter: brightness(1.08);
+    }
+
+    .status {
+      font-size: 11px;
+      min-height: 14px;
+    }
+
+    .status.error {
+      color: #ff8e9a;
+      text-shadow: 0 0 6px rgba(255, 90, 90, 0.8);
+    }
+
+    .status.success {
+      color: #7fff9a;
+      text-shadow: 0 0 10px rgba(73, 255, 167, 0.9);
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .join-card {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="portal">
+    <div class="header">
+      <div class="header-title">Diorite</div>
+      <div class="header-subtitle">
+        diorite is a free and open-source tool for joining Roblox GameInstances.
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Stats card -->
+      <div class="card">
+        <div class="card-title">Stats</div>
+        <div class="stat-label">Jumps Used</div>
+        <div id="jumps" class="stat-value">0</div>
+
+        <div class="stat-label" style="margin-top: 8px;">joinning thing</div>
+        <div class="pill">WORKS ALL OF THE TIME!!!!!</div>
+
+        <div class="stat-label" style="margin-top: 8px;">fish tier</div>
+        <div class="stat-badge">Tier 22</div>
+      </div>
+
+      <!-- Downloads card -->
+      <div class="card">
+        <div class="card-title">ignore this</div>
+
+        <div class="download-item">
+          <div class="download-label">hi</div>
+          <div class="download-desc">hi.</div>
+        </div>
+
+        <div class="download-item">
+          <div class="download-label">nothing</div>
+          <div class="download-desc">hi</div>
+        </div>
+
+        <span class="pill">f</span>
+      </div>
+
+      <!-- Join GameInstance card -->
+      <div class="card join-card">
+        <div class="card-title">GameInstance Jump</div>
+
+        <div>
+          <div class="input-label">GameInstance String</div>
+          <input
+            id="gi"
+            class="input-field"
+            placeholder="javascript:Roblox.GameLauncher.joinGameInstance(PLACEID, 'JOBID')"
+          />
+        </div>
+
+        <div class="join-row">
+          <button class="btn-join" onclick="joinInstance()">Join Instance</button>
+          <div id="status" class="status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let jumpsUsed = 0;
+
+    function joinInstance() {
+      const raw = document.getElementById("gi").value.trim();
+      const statusEl = document.getElementById("status");
+
+      statusEl.textContent = "";
+      statusEl.className = "status";
+
+      const match = raw.match(/joinGameInstance\((\d+),\s*'([0-9a-fA-F-]+)'\)/);
+      if (!match) {
+        statusEl.textContent = "Invalid GameInstance format.";
+        statusEl.classList.add("error");
+        return;
+      }
+
+      const place = match[1];
+      const job = match[2];
+
+      window.location.href = `roblox://placeID=${place}&gameInstanceId=${job}`;
+
+      jumpsUsed += 1;
+      document.getElementById("jumps").textContent = jumpsUsed.toString();
+
+      statusEl.textContent = "Joined successfully!";
+      statusEl.classList.add("success");
+    }
+  </script>
+</body>
+</html>
